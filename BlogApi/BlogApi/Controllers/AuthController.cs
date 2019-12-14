@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using BlogApi.Data;
 using BlogApi.Dtos;
 using BlogApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,7 @@ namespace BlogApi.Controllers
 
             return StatusCode(201);
         }
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLogin userLogin)
         {
