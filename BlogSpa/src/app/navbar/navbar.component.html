@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Blog Dip</a>
+  <a class="navbar-brand" [routerLink]="[ '/topposts']">Blog Dip</a>
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -10,8 +10,8 @@
       </li>
     </ul>
     <div class="d-inline my-2 my-lg-0">
-      <button *ngIf="!isLoggedIn" class="btn btn-outline-success my-2 my-sm-0 mx-2" type="submit">Signin</button>
-      <button *ngIf="!isLoggedIn" class="btn btn-outline-warning my-2 my-sm-0 mx-2" type="submit">Login</button>
+      <button *ngIf="!isLoggedIn" class="btn btn-outline-success my-2 my-sm-0 mx-2" [routerLink]="['/register']">Signin</button>
+      <button *ngIf="!isLoggedIn" class="btn btn-outline-warning my-2 my-sm-0 mx-2" [routerLink]="['/login']">Login</button>
       <button *ngIf="isLoggedIn" class="btn btn-outline-danger my-2 my-sm-0 mx-2" (click)="logout()" >Logout</button>
     </div>
 </nav>

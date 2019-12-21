@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,10 @@ import { AuthService } from '../_services/auth.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private router: Router
+
   ) { }
   model: any = {};
 
@@ -19,9 +24,11 @@ export class LoginComponent implements OnInit {
     console.log(this.model);
     this.authService.login(this.model).subscribe(res => {
       console.log('Success');
+      this.router.navigate(['/topposts']);
     },
     (err) => {
-      console.log(err);
+      this.toastr.error(err);
+
     }
     );
   }
