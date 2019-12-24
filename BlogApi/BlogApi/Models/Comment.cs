@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogApi.Models
 {
-    public class Post
+    public class Comment
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
         public string Content { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public Post Post { get; set; }
+        public Guid PostId { get; set; }
         public User CreatedBy { get; set; }
         public Guid CreatedById { get; set; }
         public DateTime CreatedOn { get; set; }

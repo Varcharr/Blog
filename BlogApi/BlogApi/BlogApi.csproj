@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20191207093056_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191207093056_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191207145920_AddedUserEntity.cs" />
+    <Compile Remove="Migrations\20191207145920_AddedUserEntity.Designer.cs" />
+    <Compile Remove="Migrations\20191222141550_GuidTest.cs" />
+    <Compile Remove="Migrations\20191222141550_GuidTest.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />

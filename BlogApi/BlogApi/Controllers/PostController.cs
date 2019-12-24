@@ -17,7 +17,7 @@ namespace BlogApi.Controllers
         }
         // GET api/values
         [HttpGet]
-        public IActionResult GetPost(int postId)
+        public IActionResult GetPost(Guid postId)
         {
             var post = _context.Posts.FirstOrDefault(_ => _.Id == postId);
             return Ok(post);
