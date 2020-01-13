@@ -40,9 +40,9 @@ namespace BlogApi.Data
             return await _context.Comments.Where(c => c.PostId == postId).ToListAsync();
         }
 
-        public Task<IEnumerable<Post>> GetTopPosts()
+        public async Task<IEnumerable<Post>> GetTopPosts()
         {
-            throw new NotImplementedException();
+            return await _context.Posts.ToListAsync();
         }
 
         public async Task<User> GetUser(Guid id)

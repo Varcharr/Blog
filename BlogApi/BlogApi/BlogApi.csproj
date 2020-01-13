@@ -12,9 +12,16 @@
     <Compile Remove="Migrations\20191207145920_AddedUserEntity.Designer.cs" />
     <Compile Remove="Migrations\20191222141550_GuidTest.cs" />
     <Compile Remove="Migrations\20191222141550_GuidTest.Designer.cs" />
+    <Compile Remove="Migrations\20191222142050_GuidIds.cs" />
+    <Compile Remove="Migrations\20191222142050_GuidIds.Designer.cs" />
+    <Compile Remove="Migrations\20191228120248_UpdatedModels.cs" />
+    <Compile Remove="Migrations\20191228120248_UpdatedModels.Designer.cs" />
+    <Compile Remove="Migrations\20191228124258_UpdatedModels.cs" />
+    <Compile Remove="Migrations\20191228124258_UpdatedModels.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />

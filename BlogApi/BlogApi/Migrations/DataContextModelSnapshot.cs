@@ -23,13 +23,21 @@ namespace BlogApi.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<Guid?>("UserId");
+                    b.Property<Guid>("CreatedById");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime>("ModifiedOn");
+
+                    b.Property<Guid>("PostId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CreatedById");
 
-                    b.ToTable("Comment");
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("BlogApi.Models.Post", b =>
@@ -39,13 +47,17 @@ namespace BlogApi.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<string>("Name");
+                    b.Property<Guid>("CreatedById");
 
-                    b.Property<Guid?>("UserId");
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime>("ModifiedOn");
+
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CreatedById");
 
                     b.ToTable("Posts");
                 });
@@ -56,6 +68,10 @@ namespace BlogApi.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Bio");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime>("ModifiedOn");
 
                     b.Property<byte[]>("PasswordHash");
 
@@ -70,16 +86,23 @@ namespace BlogApi.Migrations
 
             modelBuilder.Entity("BlogApi.Models.Comment", b =>
                 {
-                    b.HasOne("BlogApi.Models.User")
+                    b.HasOne("BlogApi.Models.User", "CreatedBy")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BlogApi.Models.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BlogApi.Models.Post", b =>
                 {
-                    b.HasOne("BlogApi.Models.User")
+                    b.HasOne("BlogApi.Models.User", "CreatedBy")
                         .WithMany("Posts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

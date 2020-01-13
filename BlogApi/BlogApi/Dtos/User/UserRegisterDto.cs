@@ -11,7 +11,7 @@ namespace BlogApi.Dtos
         [Required]
         public string Username { get; set; }
         [Required]
-        [StringLength(12,MinimumLength =4, ErrorMessage ="Password must containe minimun 4 and maximum 12 characters" )]
+        [StringLength(12,MinimumLength =4, ErrorMessage = "Password must contain minimun 4 and maximum 12 characters")]
         public string Password { get; set; }
     }
 }

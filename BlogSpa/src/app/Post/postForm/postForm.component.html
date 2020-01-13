@@ -1,0 +1,10 @@
+<h3>
+  Create new post
+</h3>
+<div style="height: 85%;">
+  <strong>Title</strong>
+  <input [(ngModel)]="post.name" required type="text" class="form-control" name="Title">
+  <br>
+  <quill-editor [(ngModel)]="post.content" [readOnly]="readOnly"></quill-editor>
+  <button (click)="save()" class="save-btn btn btn-success">Save</button>
+</div>

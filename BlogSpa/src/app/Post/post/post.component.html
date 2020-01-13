@@ -1,0 +1,6 @@
+<div id="container" *ngIf="post">
+  <h3 [innerHTML]="post.name"></h3>
+  <div id="post" [innerHTML]="post.content">
+  </div>
+  <a [routerLink]="[ '/user', post.createdById ]">USER</a>
+</div>

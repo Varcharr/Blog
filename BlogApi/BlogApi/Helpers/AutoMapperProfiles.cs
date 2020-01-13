@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlogApi.Dtos;
+using BlogApi.Dtos.Post;
 using BlogApi.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace BlogApi.Helpers
         {
             CreateMap<User, UserDetailsDto>();
             CreateMap<Post, PostDto>();
+            CreateMap<CreatePostDto, Post>();
             CreateMap<Comment, CommentDto>();
         }
 
