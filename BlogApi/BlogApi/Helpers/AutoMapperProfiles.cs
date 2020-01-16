@@ -14,6 +14,7 @@ namespace BlogApi.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<User, UserDetailsDto>();
+            CreateMap<UserDetailsDto, User>();
             CreateMap<Post, PostDto>();
             CreateMap<CreatePostDto, Post>();
             CreateMap<Comment, CommentDto>();

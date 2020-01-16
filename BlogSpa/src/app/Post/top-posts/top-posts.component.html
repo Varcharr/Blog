@@ -1,6 +1,6 @@
 <div id="container" *ngIf="topPosts">
   <div *ngFor="let post of topPosts">
-    <h3> <a [routerLink]="[ '/post/', post.id]"> {{post.name}}</a></h3>
-    <span [innerHTML]="post.content"></span>
+    <a [routerLink]="[ '/post/', post.id]" class="header"> {{post.name | uppercase }}</a>
+    <span class="word-break" [innerHTML]="post.content"></span>
   </div>
 </div>

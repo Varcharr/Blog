@@ -1,5 +1,18 @@
-.content{
+@import "./styles/variables.scss";
+
+#app {
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
+  background-color: $TealGreen;
+
+
+  .content {
     padding: 20px;
-    height: calc(100vh - 56px);
-    overflow: hidden;
+    width: 1366px;
+    min-height: calc(100vh - 56px);
+    height: fit-content;
+    background-color: $Ivory;
+  }
 }

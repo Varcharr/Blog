@@ -1,6 +1,11 @@
 <div id="container" *ngIf="post">
-  <h3 [innerHTML]="post.name"></h3>
+  <h1 class="title" [innerHTML]="post.name"></h1>
+  {{post.modifiedOn | date}}
+  <p>
+    Autor:
+    <a [routerLink]="[ '/user', post.createdById ]">{{post.createdBy.username}}</a>
+  </p>
+  <hr>
   <div id="post" [innerHTML]="post.content">
   </div>
-  <a [routerLink]="[ '/user', post.createdById ]">USER</a>
 </div>
