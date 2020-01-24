@@ -1,3 +1,4 @@
+<h1>Top Posts</h1>
 <div id="container" *ngIf="topPosts">
   <div *ngFor="let post of topPosts">
     <a [routerLink]="[ '/post/', post.id]" class="header"> {{post.name | uppercase }}</a>

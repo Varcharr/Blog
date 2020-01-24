@@ -1,3 +1,5 @@
+import { CommentComponent } from "./comment/comment/comment.component";
+import { CommentFormComponent } from "./comment/comment-form/comment-form.component";
 import { AuthGuard } from "./_guards/auth.guard";
 import { ErrorInteceptorProvider } from "./_services/error.inteceptor";
 import { BrowserModule } from "@angular/platform-browser";
@@ -21,6 +23,7 @@ import { TopPostsComponent } from "./post/top-posts/top-posts.component";
 import { PostFormComponent } from "./post/postForm/postForm.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { environment } from "src/environments/environment";
+import { CommentWrapperComponent } from "./comment/comment-wrapper/comment-wrapper.component";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -37,7 +40,10 @@ export function tokenGetter() {
     PostComponent,
     TopPostsComponent,
     PostFormComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CommentFormComponent,
+    CommentComponent,
+    CommentWrapperComponent
   ],
   imports: [
     BrowserModule,

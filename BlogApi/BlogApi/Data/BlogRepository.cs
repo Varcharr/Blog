@@ -32,7 +32,7 @@ namespace BlogApi.Data
 
         public async Task<Post> GetPost(Guid id)
         {
-            return await _context.Posts.Include(_=>_.CreatedBy).FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Posts.Include(_=>_.CreatedBy).Include(_ => _.Comments).FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Comment>> GetPostComments(Guid postId)

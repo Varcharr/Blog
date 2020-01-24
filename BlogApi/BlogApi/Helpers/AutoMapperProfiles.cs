@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlogApi.Dtos;
+using BlogApi.Dtos.Comment;
 using BlogApi.Dtos.Post;
 using BlogApi.Models;
 using System;
@@ -18,6 +19,7 @@ namespace BlogApi.Helpers
             CreateMap<Post, PostDto>();
             CreateMap<CreatePostDto, Post>();
             CreateMap<Comment, CommentDto>();
+            CreateMap<CreateCommentDto, Comment>();
         }
 
     }

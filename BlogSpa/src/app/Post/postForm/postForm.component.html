@@ -1,8 +1,9 @@
 <h3>
-  Create new post
+  Napravite novi post
 </h3>
+<br>
 <div style="height: 85%;">
-  <strong>Title</strong>
+  <strong>Naslov</strong>
   <input [(ngModel)]="post.name" required type="text" class="form-control" name="Title">
   <br>
   <quill-editor [(ngModel)]="post.content" [readOnly]="readOnly"></quill-editor>

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using BlogApi.Data;
+using BlogApi.Dtos;
 using BlogApi.Dtos.Post;
 using BlogApi.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApi.Controllers
@@ -41,6 +40,7 @@ namespace BlogApi.Controllers
            _repository.Add(post);
             return Ok(await _repository.SaveAll());
         }
+
         [HttpPost("update")]
         public async Task<IActionResult> UpdatePost(UpdatePostDto updatePost)
         {
@@ -54,16 +54,29 @@ namespace BlogApi.Controllers
         }
 
         [HttpGet("{postId}")]
-        public async Task<IActionResult> GetPost(Guid postId)
+        public async Task<ActionResult<PostDto>> GetPost(Guid postId)
         {
-            var post = await _repository.GetPost(postId);
-            return Ok(post);
+            Post post = await _repository.GetPost(postId);
+            PostDto postDto = _mapper.Map<Post, PostDto>(post);
+            return Ok(postDto);
         }
+
         [HttpGet("topposts")]
-        public async Task<IActionResult> GetTopPosts()
+        public async Task<ActionResult<IEnumerable<PostDto>>> GetTopPosts()
         {
             var post = await _repository.GetTopPosts();
             return Ok(post);
+        }
+
+        [HttpDelete("{postId}")]
+        public async Task<IActionResult> DeletePost(Guid postId)
+        {
+            Post post = await _repository.GetPost(postId);
+            if (post == null)
+                return NotFound();
+
+            _repository.Delete<Post>(post);
+            return Ok(await _repository.SaveAll());
         }
     }
 }

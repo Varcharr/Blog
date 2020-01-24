@@ -4,9 +4,8 @@
   display: flex;
   justify-content: center;
   height: calc(100vh - 56px);
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: $TealGreen;
-
 
   .content {
     padding: 20px;

@@ -8,4 +8,14 @@
   <hr>
   <div id="post" [innerHTML]="post.content">
   </div>
+  <br>
+
+  <h4>
+    Komentari
+  </h4>
+  <div *ngIf="post && post.comments">
+    <app-comment *ngFor="let comment of post?.comments; trackBy: trackByFn" [comment]="comment"
+      (onDelete)="deleteComment(comment.id);"></app-comment>
+  </div>
+  <app-comment-form (commented)="saveComment($event)"></app-comment-form>
 </div>

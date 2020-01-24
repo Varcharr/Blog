@@ -1,0 +1,6 @@
+<hr>
+<div>
+  {{comment.content}}
+  <button *ngIf="isUserOwner()" (click)="delete()">x</button>
+</div>
+<hr>

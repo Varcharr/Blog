@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BlogApi.Data;
+using BlogApi.Dtos;
 using BlogApi.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApi.Controllers
@@ -29,8 +27,9 @@ namespace BlogApi.Controllers
         public async Task<IActionResult> GetUser(Guid id)
         {
             var user = await _repository.GetUser(id);
-            var userDetails = _mapper.Map<User>(user);
+            var userDetails = _mapper.Map<User, UserDetailsDto>(user);
             return Ok(userDetails);
         }
+
     }
 }
