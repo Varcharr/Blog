@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -30,6 +31,14 @@ namespace BlogApi.Controllers
             CommentDto commentDto = _mapper.Map<Comment, CommentDto>(comment);
 
             return commentDto;
+        }   
+        [HttpGet("post/{postId}")]
+        public async Task<IEnumerable<CommentDto>> GetPostComments(Guid postId)
+        {
+            IEnumerable<Comment> comments = await _repository.GetPostComments(postId);
+            IEnumerable<CommentDto> commentDtos = _mapper.Map< IEnumerable<Comment>, IEnumerable<CommentDto>>(comments);
+
+            return commentDtos;
         }
 
         [HttpPost("create")]

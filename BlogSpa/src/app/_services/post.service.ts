@@ -11,11 +11,14 @@ export class PostService {
 
   baseUrl = environment.apiUrl + "post/";
 
-  getPost(id: string): Observable<any> {
+  fetchPost(id: string): Observable<any> {
     return this.http.get(this.baseUrl + id);
   }
-  getTopPost(): Observable<any> {
+  fetchTopPosts(): Observable<any> {
     return this.http.get(this.baseUrl + "topposts");
+  }
+  fetchUserPosts(id: string): Observable<any> {
+    return this.http.get(this.baseUrl + "user/" + id);
   }
   createPost(post: any): Observable<any> {
     return this.http.post(this.baseUrl + "create", post);

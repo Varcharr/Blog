@@ -1,9 +1,4 @@
-<!-- <p>
-  Unesite vas komentar
-</p> -->
-
-
-<div>
-  <input [(ngModel)]="commentContent" placeholder="Unesite vas komentar">
-  <button (click)="saveComment()">Objavi</button>
+<div class="comment-form-wrapper">
+  <textarea [(ngModel)]="commentContent" placeholder="Unesite vas komentar" rows="3"></textarea>
+  <button class="btn btn-success" (click)="saveComment()">Objavi</button>
 </div>

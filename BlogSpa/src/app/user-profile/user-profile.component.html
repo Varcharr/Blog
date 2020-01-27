@@ -2,3 +2,8 @@
   <h3>Info</h3>
   Korisnicko ime: {{user.username}}
 </div>
+<hr>
+Postovi korisnika {{user.username}}
+<div *ngFor="let post of posts">
+  <a [routerLink]="[ '/post/', post.id]" class="header"> {{post.name}}</a>
+</div>

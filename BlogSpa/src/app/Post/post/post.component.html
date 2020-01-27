@@ -1,5 +1,7 @@
 <div id="container" *ngIf="post">
-  <h1 class="title" [innerHTML]="post.name"></h1>
+  <h1 class="title">{{post.name}} <button class="btn btn-warning" *ngIf="isUserOwner()"
+      (click)="editPost()">Izmeni</button>
+  </h1>
   {{post.modifiedOn | date}}
   <p>
     Autor:
@@ -13,8 +15,8 @@
   <h4>
     Komentari
   </h4>
-  <div *ngIf="post && post.comments">
-    <app-comment *ngFor="let comment of post?.comments; trackBy: trackByFn" [comment]="comment"
+  <div *ngIf="comments">
+    <app-comment *ngFor="let comment of comments; trackBy: trackByFn" [comment]="comment"
       (onDelete)="deleteComment(comment.id);"></app-comment>
   </div>
   <app-comment-form (commented)="saveComment($event)"></app-comment-form>

@@ -1,17 +1,1 @@
 @import "./styles/variables.scss";
-
-#app {
-  display: flex;
-  justify-content: center;
-  height: calc(100vh - 56px);
-  overflow-y: auto;
-  background-color: $TealGreen;
-
-  .content {
-    padding: 20px;
-    width: 1366px;
-    min-height: calc(100vh - 56px);
-    height: fit-content;
-    background-color: $Ivory;
-  }
-}

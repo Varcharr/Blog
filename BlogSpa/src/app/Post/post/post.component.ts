@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { PostService } from "src/app/_services/post.service";
 import { ToastrService } from "ngx-toastr";
+import { AuthService } from "src/app/_services/auth.service";
 
 @Component({
   selector: "app-post",
@@ -15,25 +16,37 @@ export class PostComponent implements OnInit {
     private postService: PostService,
     private commentService: CommentService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   post: any;
+  comments: any;
+  postId;
   ngOnInit() {
-    this.getPost();
+    this.postId = this.route.snapshot.paramMap.get("id");
+    this.fetchPost();
+    this.fetchComments();
   }
 
-  getPost() {
-    let postId = this.route.snapshot.paramMap.get("id");
-    console.log(postId);
-
-    this.postService.getPost(postId).subscribe(
+  fetchPost() {
+    this.postService.fetchPost(this.postId).subscribe(
       res => {
         this.post = res;
-        console.log(res);
       },
       err => {
         this.toastr.error("Error while loading post data");
+      }
+    );
+  }
+
+  fetchComments() {
+    this.commentService.fetchPostComments(this.postId).subscribe(
+      res => {
+        this.comments = res;
+      },
+      err => {
+        this.toastr.error("Error while loading comment data");
       }
     );
   }
@@ -44,7 +57,7 @@ export class PostComponent implements OnInit {
     this.commentService.createComment(comment).subscribe(
       res => {
         this.toastr.success("Komentar uspesno dodat");
-        this.getPost();
+        this.fetchComments();
       },
       err => {
         this.toastr.error("Greska prilikom cuvanja komentara");
@@ -58,7 +71,7 @@ export class PostComponent implements OnInit {
     this.commentService.deleteComment(commentId).subscribe(
       res => {
         this.toastr.success("Komentar uspesno obrisan");
-        this.post.comments = this.post.comments.filter(
+        this.comments = this.comments.filter(
           comment => comment.id != commentId
         );
       },
@@ -66,5 +79,11 @@ export class PostComponent implements OnInit {
         this.toastr.error("Greska prilikom brisanja komentara");
       }
     );
+  }
+  editPost() {
+    this.router.navigate(["/post/", this.postId, "edit"]);
+  }
+  isUserOwner() {
+    return this.authService.isUserOwner(this.post.createdById);
   }
 }

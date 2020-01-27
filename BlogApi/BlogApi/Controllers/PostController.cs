@@ -49,7 +49,7 @@ namespace BlogApi.Controllers
             post.Content = updatePost.Content;
             post.ModifiedOn = DateTime.UtcNow;
 
-            _repository.Add(post);
+            _repository.Update(post);
             return Ok(await _repository.SaveAll());
         }
 
@@ -59,6 +59,14 @@ namespace BlogApi.Controllers
             Post post = await _repository.GetPost(postId);
             PostDto postDto = _mapper.Map<Post, PostDto>(post);
             return Ok(postDto);
+        }
+        [HttpGet("user/{userId}")]
+        public async Task<IEnumerable<PostDto>> GetUserPosts(Guid userId)
+        {
+            IEnumerable<Post> posts= await _repository.GetUserPosts(userId);
+            IEnumerable<PostDto> postDtos = _mapper.Map<IEnumerable<Post>, IEnumerable<PostDto>>(posts);
+
+            return postDtos;
         }
 
         [HttpGet("topposts")]

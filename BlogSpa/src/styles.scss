@@ -1,2 +1,32 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "./app/styles/variables.scss";
+
+
+#app {
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  background-color: $TealGreen;
+
+  .content {
+    padding: 20px;
+    width: 1366px;
+    min-height: calc(100vh - 56px);
+    height: fit-content;
+    background-color: $Ivory;
+  }
+}
+
+@media (max-width: 1366px) {
+  #app {
+    .content {
+      width: 100%;
+    }
+  }
+}
+
+.title {
+  font-weight: 700;
+}

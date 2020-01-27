@@ -1,6 +1,15 @@
-<hr>
-<div>
-  {{comment.content}}
-  <button *ngIf="isUserOwner()" (click)="delete()">x</button>
+<div class="card comment-wrapper">
+  <div class="card-header comment-user-info">
+    <a [routerLink]="['/user', comment.createdById]">{{
+      comment.createdBy.username
+    }}</a>
+    {{ comment.modifiedOn | date }}
+    <button class="btn btn-danger" *ngIf="isUserOwner()" (click)="delete()">
+      x
+    </button>
+  </div>
+  <div class="card-body">
+    {{ comment.content }}
+  </div>
 </div>
-<hr>
+<br />

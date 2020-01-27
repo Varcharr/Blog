@@ -14,6 +14,9 @@ export class CommentService {
   fetchCommentData(commentId): Observable<any> {
     return this.http.get(this.baseUrl + commentId);
   }
+  fetchPostComments(postId: string): Observable<any> {
+    return this.http.get(this.baseUrl + "post/" + postId);
+  }
   createComment(comment: any): Observable<any> {
     return this.http.post(this.baseUrl + "create", comment);
   }

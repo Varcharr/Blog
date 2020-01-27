@@ -22,7 +22,7 @@ export class TopPostsComponent implements OnInit {
   }
 
   getTopPosts() {
-    this.postService.getTopPost().subscribe(
+    this.postService.fetchTopPosts().subscribe(
       res => {
         console.log(res);
         this.topPosts = res;

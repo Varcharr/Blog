@@ -22,7 +22,6 @@ export class AuthService {
         if (user) {
           localStorage.setItem("token", user.token);
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
-          this.userId = this.jwtHelper.decodeToken(user.token).nameid;
         }
       })
     );
@@ -38,8 +37,7 @@ export class AuthService {
     localStorage.removeItem("token");
   }
   isUserOwner(entityCreatedById: string) {
-    console.log(entityCreatedById, this.userId);
-
-    return entityCreatedById === this.userId;
+    const token = localStorage.getItem("token");
+    return entityCreatedById === this.jwtHelper.decodeToken(token).nameid;
   }
 }

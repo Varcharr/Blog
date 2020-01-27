@@ -19,6 +19,10 @@ namespace BlogApi.Data
         {
             _context.Add(entity);
         }
+        public void Update<T>(T entity) where T : class
+        {
+            _context.Update(entity);
+        }
 
         public void Delete<T>(T entity) where T : class
         {
@@ -32,12 +36,12 @@ namespace BlogApi.Data
 
         public async Task<Post> GetPost(Guid id)
         {
-            return await _context.Posts.Include(_=>_.CreatedBy).Include(_ => _.Comments).FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Posts.Include(_=>_.CreatedBy).FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Comment>> GetPostComments(Guid postId)
         {
-            return await _context.Comments.Where(c => c.PostId == postId).ToListAsync();
+            return await _context.Comments.Include(_ =>_.CreatedBy).Where(c => c.PostId == postId).ToListAsync();
         }
 
         public async Task<IEnumerable<Post>> GetTopPosts()

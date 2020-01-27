@@ -18,6 +18,11 @@ const routes: Routes = [
   },
   { path: "topposts", component: TopPostsComponent, canActivate: [AuthGuard] },
   { path: "post/new", component: PostFormComponent, canActivate: [AuthGuard] },
+  {
+    path: "post/:id/edit",
+    component: PostFormComponent,
+    canActivate: [AuthGuard]
+  },
   { path: "post/:id", component: PostComponent, canActivate: [AuthGuard] },
   { path: "**", component: LoginComponent, pathMatch: "full" }
 ];

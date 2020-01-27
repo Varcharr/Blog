@@ -1,4 +1,4 @@
 export interface CreatePost {
-    name: string
-    content: string
+  name: string;
+  content: string;
 }

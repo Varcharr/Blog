@@ -11,9 +11,7 @@ export class CommentComponent implements OnInit {
 
   @Input() comment;
   @Output() onDelete = new EventEmitter();
-  ngOnInit() {
-    console.log("Comment", this.comment);
-  }
+  ngOnInit() {}
 
   delete() {
     this.onDelete.emit();
