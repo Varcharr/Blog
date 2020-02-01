@@ -12,7 +12,7 @@
 
   .content {
     padding: 20px;
-    width: 1366px;
+    padding-top: 80px;
     min-height: calc(100vh - 56px);
     height: fit-content;
     background-color: $Ivory;
@@ -33,4 +33,69 @@
 
 .border-lightgray {
   border: 1px solid lightgray;
+}
+
+.max-lines {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 10 !important;
+  /* number of lines to show */
+}
+
+.ql-tooltip {
+  display: none;
+
+  .ql-hidden {
+    display: none;
+  }
+}
+
+.post {
+  max-height: 350px;
+  overflow: hidden;
+  border: 1px solid lightgray;
+  padding: 20px;
+  margin-bottom: 20px;
+
+  .ql-editor {
+    overflow: hidden;
+    max-height: 210px;
+  }
+}
+
+.ql-editor {
+  word-break: break-all;
+}
+
+.header {
+  text-decoration: underline;
+  color: $Aqua;
+  font-size: 2.17em;
+  font-weight: 600;
+
+  &:hover {
+    color: $PinkBrown;
+  }
+}
+
+.word-break {
+  word-break: break-word;
+}
+
+.read-more-link {
+  color: $Aqua;
+
+  &:hover {
+    color: $PinkBrown;
+  }
+}
+
+.username-link {
+  color: $PinkBrown;
+
+  &:hover {
+    color: $Aqua;
+  }
 }

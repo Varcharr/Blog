@@ -39,6 +39,9 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
+  addClassToPost(post) {
+    return "<span class='max-lines'>" + post + "</span>";
+  }
   fetchUserPosts() {
     let userId = this.route.snapshot.paramMap.get("id");
     this.postService.fetchUserPosts(userId).subscribe(

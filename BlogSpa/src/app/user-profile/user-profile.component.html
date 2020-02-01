@@ -1,9 +1,24 @@
-<div *ngIf="user">
-  <h3>Info</h3>
-  Korisnicko ime: {{user.username}}
-</div>
-<hr>
-Postovi korisnika {{user.username}}
-<div *ngFor="let post of posts">
-  <a [routerLink]="[ '/post/', post.id]" class="header"> {{post.name}}</a>
+<div class="d-flex flex-column  align-items-center" *ngIf="user">
+  <img style="width: 120px;" src="./assets/user.png" alt="image" />
+
+  <h3>
+    {{ user.username | uppercase }}
+  </h3>
+  <hr />
+
+  <h5>
+    Postovi korisnika {{ user.username | uppercase }}
+  </h5>
+  <div class="post" *ngFor="let post of posts">
+    <a [routerLink]="['/post/', post.id]" class="header"> {{ post.name }} </a>
+    <!-- <p class="max-lines" [innerHTML]="addClassToPost(post.content )"> -->
+    <!-- </p> -->
+    <!-- [modules]="{ toolbar: false }" -->
+    <quill-editor theme="bubble" [style]="{ border: '0px' }" [readOnly]="true" [(ngModel)]="post.content"
+      [readOnly]="readOnly"></quill-editor><br>
+    <span class="text-center">
+
+      <a class="read-more-link" [routerLink]="['/post/', post.id]"> Pročitaj više <i class="fa fa-book"></i></a>
+    </span>
+  </div>
 </div>

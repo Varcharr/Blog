@@ -86,4 +86,15 @@ export class PostComponent implements OnInit {
   isUserOwner() {
     return this.authService.isUserOwner(this.post.createdById);
   }
+  deletePost() {
+    this.postService.deletePost(this.postId).subscribe(
+      res => {
+        this.toastr.success("Članak uspešno obrisan");
+        this.router.navigate(["/topposts"]);
+      },
+      err => {
+        this.toastr.error("Greška prilikom brisanja članka");
+      }
+    );
+  }
 }

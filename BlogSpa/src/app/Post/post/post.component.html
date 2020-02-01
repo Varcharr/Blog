@@ -1,17 +1,20 @@
 <div id="container" *ngIf="post">
-  <h1 class="title">{{post.name}} <button class="btn btn-warning" *ngIf="isUserOwner()"
-      (click)="editPost()">Izmeni</button>
+  <h1 class="title">{{post.name}}
+    <button class="btn btn-warning mr-2" *ngIf="isUserOwner()" (click)="editPost()">Izmeni</button>
+    <button class="btn btn-danger" *ngIf="isUserOwner()" (click)="deletePost()">Obriši</button>
   </h1>
   {{post.modifiedOn | date}}
   <p>
     Autor:
-    <a [routerLink]="[ '/user', post.createdById ]">{{post.createdBy.username}}</a>
+    <a class="username-link" [routerLink]="[ '/user', post.createdById ]">{{post.createdBy.username | uppercase}}</a>
   </p>
   <hr>
-  <div id="post" [innerHTML]="post.content">
-  </div>
-  <br>
+  <!-- <div id="post" [innerHTML]="post.content | sanitizeHtml"> -->
+  <!-- </div> -->
+  <quill-editor [style]="{ border: '0px' }" theme="bubble" [readOnly]="true" [(ngModel)]="post.content"
+    [readOnly]="readOnly"></quill-editor>
 
+  <br>
   <h4>
     Komentari
   </h4>

@@ -1,22 +1,20 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" [routerLink]="[ '/topposts']">Blog Dip</a>
-
-  <ul class="nav ml-auto ">
-    <li class="nav-item active">
-      <a class="nav-link" [routerLink]="[ '/topposts' ]" routerLinkActive="test">Postovi</a>
-    </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" [routerLink]="[ '/topposts' ]" routerLinkActive="test">Profil</a>
-    </li> -->
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="[ '/post/new' ]" routerLinkActive="test">Novi Post</a>
-    </li>
-  </ul>
-  <div class="d-inline my-2 my-lg-0">
-    <button *ngIf="!isLoggedIn" class="btn btn-outline-success my-2 my-sm-0 mx-2"
-      [routerLink]="['/register']">Signin</button>
-    <button *ngIf="!isLoggedIn" class="btn btn-outline-warning my-2 my-sm-0 mx-2"
-      [routerLink]="['/login']">Login</button>
-    <button *ngIf="isLoggedIn" class="btn btn-outline-danger my-2 my-sm-0 mx-2" (click)="logout()">Logout</button>
+  <div class="container-xl">
+    <a class="navbar-brand" [routerLink]="[ '/topposts']">Blog Dip</a>
+    <ul *ngIf="isLoggedIn" class="nav ml-auto ">
+      <li class="nav-item">
+        <a class="link" class="nav-link" [routerLink]="[ '/topposts' ]" routerLinkActive="active">Postovi</a>
+      </li>
+      <li class="nav-item">
+        <a class="link" class="nav-link" [routerLink]="[ '/post/new' ]" routerLinkActive="active">Novi Post</a>
+      </li>
+    </ul>
+    <div class="d-inline my-2 my-lg-0">
+      <button *ngIf="!isLoggedIn" class="btn btn-outline-success my-2 my-sm-0 mx-2"
+        [routerLink]="['/register']">Registruj se</button>
+      <button *ngIf="!isLoggedIn" class="btn btn-outline-warning my-2 my-sm-0 mx-2" [routerLink]="['/login']">Prijavi
+        se</button>
+      <button *ngIf="isLoggedIn" class="btn btn-outline-danger my-2 my-sm-0 mx-2" (click)="logout()">Odjavi se</button>
+    </div>
   </div>
 </nav>

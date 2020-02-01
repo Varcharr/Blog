@@ -1,11 +1,16 @@
-<h3>
-  Napravite novi post
-</h3>
+<div class="d-flex justify-content-between">
+  <h3 *ngIf="!postId">
+    Napravite novi članak
+  </h3>
+  <h3 *ngIf="postId">
+    Izmenite članak
+  </h3>
+  <button (click)="save()" class=" btn btn-success">Sačuvaj</button>
+</div>
 <br>
 <div style="height: 85%;">
   <strong>Naslov</strong>
   <input [(ngModel)]="post.name" required type="text" class="form-control" name="Title">
   <br>
   <quill-editor [(ngModel)]="post.content" [readOnly]="readOnly"></quill-editor>
-  <button (click)="save()" class="save-btn btn btn-success">Save</button>
 </div>

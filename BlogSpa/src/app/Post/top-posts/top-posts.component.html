@@ -1,7 +1,11 @@
-<h1>Top Posts</h1>
+<h1 class="text-center bold">ČLANCI</h1>
 <div id="container" *ngIf="topPosts">
-  <div *ngFor="let post of topPosts">
+  <div class="post" *ngFor="let post of topPosts">
     <a [routerLink]="[ '/post/', post.id]" class="header"> {{post.name | uppercase }}</a>
-    <span class="word-break" [innerHTML]="post.content"></span>
+    <!-- <span class="word-break" [innerHTML]="post.content | sanitizeHtml"></span> -->
+    <quill-editor theme="bubble" [style]="{ border: '0px' }" [readOnly]="true" [(ngModel)]="post.content"
+      [readOnly]="readOnly"></quill-editor>
+    <br>
+    <a class="read-more-link" [routerLink]="['/post/', post.id]"> Pročitaj više <i class="fa fa-book"></i></a>
   </div>
 </div>

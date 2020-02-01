@@ -19,10 +19,11 @@ export class PostFormComponent implements OnInit {
 
   post: Post = { name: "", content: "" };
   readOnly: boolean = false;
+  postId: string;
 
   ngOnInit() {
-    const postId = this.route.snapshot.paramMap.get("id");
-    if (postId) this.fetchPost(postId);
+    this.postId = this.route.snapshot.paramMap.get("id");
+    if (this.postId) this.fetchPost(this.postId);
   }
 
   fetchPost(postId) {

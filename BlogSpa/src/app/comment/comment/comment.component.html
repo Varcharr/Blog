@@ -1,19 +1,14 @@
 <div class="p-2 mb-3 border-lightgray">
   <div class="d-flex justify-content-between align-items-center">
     <span class="d-flex align-items-center">
-      <i class="fa fa-user-circle user-icon mr-3"></i>
+      <i class="user fa fa-user-circle user-icon mr-3"></i>
       <span class="d-flex flex-column">
-        <a [routerLink]="['/user', comment.createdById]">
-          {{ comment.createdBy.username }}</a
-        >
+        <a class="username-link" [routerLink]="['/user', comment.createdById]">
+          {{ comment.createdBy.username | uppercase}}</a>
         {{ comment.modifiedOn | date }}
       </span>
     </span>
-    <button
-      class="btn btn-outline-danger"
-      *ngIf="isUserOwner()"
-      (click)="delete()"
-    >
+    <button class="btn btn-outline-danger" *ngIf="isUserOwner()" (click)="delete()">
       <i class="fa fa-trash"></i>
     </button>
   </div>

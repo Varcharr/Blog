@@ -1,3 +1,4 @@
+import { HtmlSanitizerPipe } from "./pipes/sanitizer.pipe";
 import { CommentComponent } from "./comment/comment/comment.component";
 import { CommentFormComponent } from "./comment/comment-form/comment-form.component";
 import { AuthGuard } from "./_guards/auth.guard";
@@ -43,7 +44,8 @@ export function tokenGetter() {
     UserProfileComponent,
     CommentFormComponent,
     CommentComponent,
-    CommentWrapperComponent
+    CommentWrapperComponent,
+    HtmlSanitizerPipe
   ],
   imports: [
     BrowserModule,
