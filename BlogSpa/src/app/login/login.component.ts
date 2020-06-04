@@ -1,3 +1,6 @@
+//////////////////////////////
+// Poglavlje 3.5 - Komponente
+/////////////////////////////
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../_services/auth.service";
 import { ToastrService } from "ngx-toastr";
@@ -6,7 +9,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
   constructor(
@@ -20,11 +23,11 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.model);
     this.authService.login(this.model).subscribe(
-      res => {
+      (res) => {
         console.log("Success");
         this.router.navigate(["/topposts"]);
       },
-      err => {
+      (err) => {
         this.toastr.error(err);
       }
     );

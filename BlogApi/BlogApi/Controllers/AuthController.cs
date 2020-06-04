@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-
+//////////////////////////////
+// Poglavlje 2.4 - Kontroleri
+/////////////////////////////
 namespace BlogApi.Controllers
 {
     [Route("api/[controller]")]

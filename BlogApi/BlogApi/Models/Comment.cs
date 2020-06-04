@@ -1,5 +1,7 @@
 ﻿using System;
-
+//////////////////////////////
+// Poglavlje 2.3.1 - Kreiranje modela
+/////////////////////////////
 namespace BlogApi.Models
 {
     public class Comment

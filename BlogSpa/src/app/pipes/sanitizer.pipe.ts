@@ -1,8 +1,11 @@
+///////////////////////////
+// Poglavlje 3. - Pipe
+//////////////////////////
 import { Pipe, PipeTransform } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Pipe({
-  name: "sanitizeHtml"
+  name: "sanitizeHtml",
 })
 export class HtmlSanitizerPipe implements PipeTransform {
   constructor(private _sanitizer: DomSanitizer) {}

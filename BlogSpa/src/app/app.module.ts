@@ -1,3 +1,6 @@
+//////////////////////////////
+// Poglavlje 3.6 - Moduli
+/////////////////////////////
 import { HtmlSanitizerPipe } from "./pipes/sanitizer.pipe";
 import { CommentComponent } from "./comment/comment/comment.component";
 import { CommentFormComponent } from "./comment/comment-form/comment-form.component";
@@ -17,7 +20,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { LoginComponent } from "./login/login.component";
-import { HomeComponent } from "./home/home.component";
 import { RegisterComponent } from "./register/register.component";
 import { PostComponent } from "./post/post/post.component";
 import { TopPostsComponent } from "./post/top-posts/top-posts.component";
@@ -31,12 +33,12 @@ export function tokenGetter() {
 }
 
 @NgModule({
+  // Komponente koje se deklarisu kao deo ovog modula
   declarations: [
     AppComponent,
     PostComponent,
     NavbarComponent,
     LoginComponent,
-    HomeComponent,
     RegisterComponent,
     PostComponent,
     TopPostsComponent,
@@ -45,25 +47,29 @@ export function tokenGetter() {
     CommentFormComponent,
     CommentComponent,
     CommentWrapperComponent,
-    HtmlSanitizerPipe
+    HtmlSanitizerPipe,
   ],
+  // Moduli koji su potrebni unutar ovog modula
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    //Podesavanja JWT tokena, vrednosti se uzimaju iz environment.ts fajla
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: environment.whitelistedDomains,
-        blacklistedRoutes: environment.blacklistedRoutes
-      }
+        blacklistedRoutes: environment.blacklistedRoutes,
+      },
     }),
     ToastrModule.forRoot(),
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
   ],
+  //Servisi koje omaj modul pruza
   providers: [AuthService, ErrorInteceptorProvider, AuthGuard],
-  bootstrap: [AppComponent]
+  //Komponenta koja se postavlja kao pocetna
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

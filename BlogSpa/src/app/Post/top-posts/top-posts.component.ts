@@ -1,3 +1,6 @@
+//////////////////////////////
+// Poglavlje 3.5 - Komponente
+/////////////////////////////
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { PostService } from "src/app/_services/post.service";
@@ -6,7 +9,7 @@ import { ToastrService } from "ngx-toastr";
 @Component({
   selector: "app-top-posts",
   templateUrl: "./top-posts.component.html",
-  styleUrls: ["./top-posts.component.scss"]
+  styleUrls: ["./top-posts.component.scss"],
 })
 export class TopPostsComponent implements OnInit {
   constructor(
@@ -23,11 +26,11 @@ export class TopPostsComponent implements OnInit {
 
   getTopPosts() {
     this.postService.fetchTopPosts().subscribe(
-      res => {
+      (res) => {
         console.log(res);
         this.topPosts = res;
       },
-      err => {
+      (err) => {
         this.toastr.error(err);
       }
     );

@@ -1,3 +1,6 @@
+//////////////////////////////
+// Poglavlje 3.5 - Komponente
+/////////////////////////////
 import { Post } from "./../../_models/post/post";
 import { PostService } from "./../../_services/post.service";
 import { Component, OnInit } from "@angular/core";
@@ -7,7 +10,7 @@ import { ToastrService } from "ngx-toastr";
 @Component({
   selector: "app-postForm",
   templateUrl: "./postForm.component.html",
-  styleUrls: ["./postForm.component.scss"]
+  styleUrls: ["./postForm.component.scss"],
 })
 export class PostFormComponent implements OnInit {
   constructor(
@@ -28,10 +31,10 @@ export class PostFormComponent implements OnInit {
 
   fetchPost(postId) {
     this.postService.fetchPost(postId).subscribe(
-      res => {
+      (res) => {
         this.post = res;
       },
-      err => {
+      (err) => {
         this.toastr.error(err);
       }
     );
@@ -40,21 +43,21 @@ export class PostFormComponent implements OnInit {
   save() {
     if (this.post.id)
       this.postService.updatePost(this.post).subscribe(
-        res => {
+        (res) => {
           this.toastr.success("Post izmenjen");
           this.router.navigate(["/topposts"]);
         },
-        err => {
+        (err) => {
           this.toastr.error(err);
         }
       );
     else
       this.postService.createPost(this.post).subscribe(
-        res => {
+        (res) => {
           this.toastr.success("Post sacuvan");
           this.router.navigate(["/topposts"]);
         },
-        err => {
+        (err) => {
           this.toastr.error(err);
         }
       );

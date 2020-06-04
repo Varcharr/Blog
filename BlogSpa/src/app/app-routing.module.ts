@@ -1,3 +1,6 @@
+//////////////////////////////
+// Poglavlje 3.14 - Rutiranje
+/////////////////////////////
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { PostComponent } from "./post/post/post.component";
 import { PostFormComponent } from "./post/postForm/postForm.component";
@@ -14,21 +17,21 @@ const routes: Routes = [
   {
     path: "user/:id",
     component: UserProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   { path: "topposts", component: TopPostsComponent, canActivate: [AuthGuard] },
   { path: "post/new", component: PostFormComponent, canActivate: [AuthGuard] },
   {
     path: "post/:id/edit",
     component: PostFormComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   { path: "post/:id", component: PostComponent, canActivate: [AuthGuard] },
-  { path: "**", component: LoginComponent, pathMatch: "full" }
+  { path: "**", component: LoginComponent, pathMatch: "full" },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

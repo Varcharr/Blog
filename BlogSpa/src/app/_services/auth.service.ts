@@ -1,3 +1,6 @@
+///////////////////////////
+// Poglavlje 3.11 - Servisi
+//////////////////////////
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
@@ -6,7 +9,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { environment } from "src/environments/environment";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthService {
   constructor(private http: HttpClient) {}

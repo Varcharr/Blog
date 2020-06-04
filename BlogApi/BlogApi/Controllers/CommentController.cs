@@ -8,7 +8,9 @@ using BlogApi.Dtos;
 using BlogApi.Dtos.Comment;
 using BlogApi.Models;
 using Microsoft.AspNetCore.Mvc;
-
+//////////////////////////////
+// Poglavlje 2.4 - Kontroleri
+/////////////////////////////
 namespace BlogApi.Controllers
 {
     [Route("api/[controller]")]

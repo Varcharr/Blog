@@ -6,7 +6,9 @@ using BlogApi.Dtos;
 using BlogApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+//////////////////////////////
+// Poglavlje 2.4 - Kontroleri
+/////////////////////////////
 namespace BlogApi.Controllers
 {
     [Authorize]

@@ -1,6 +1,9 @@
+//////////////////////////////
+// Poglavlje 3.5 - Komponente
+/////////////////////////////
 import { PostService } from "src/app/_services/post.service";
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "../_services/user.service";
 import { Post } from "../_models/post/post";
@@ -8,11 +11,10 @@ import { Post } from "../_models/post/post";
 @Component({
   selector: "app-user-profile",
   templateUrl: "./user-profile.component.html",
-  styleUrls: ["./user-profile.component.scss"]
+  styleUrls: ["./user-profile.component.scss"],
 })
 export class UserProfileComponent implements OnInit {
   constructor(
-    private router: Router,
     private userService: UserService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
@@ -30,11 +32,10 @@ export class UserProfileComponent implements OnInit {
     let userId = this.route.snapshot.paramMap.get("id");
 
     this.userService.getUser(userId).subscribe(
-      res => {
+      (res) => {
         this.user = res;
-        console.log("User:", res);
       },
-      err => {
+      (err) => {
         this.toastr.error("Error while loading user data");
       }
     );
@@ -45,10 +46,10 @@ export class UserProfileComponent implements OnInit {
   fetchUserPosts() {
     let userId = this.route.snapshot.paramMap.get("id");
     this.postService.fetchUserPosts(userId).subscribe(
-      res => {
+      (res) => {
         this.posts = res;
       },
-      err => {
+      (err) => {
         this.toastr.error("Greska pri ucitavanju postova");
       }
     );

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+//////////////////////////////
+// Poglavlje 2.3.1 - Kreiranje modela
+/////////////////////////////
 namespace BlogApi.Models
 {
     public class User

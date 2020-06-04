@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//////////////////////////////
+// Poglavlje 2.3.2 - DbContext
+/////////////////////////////
 namespace BlogApi.Data
 {
     public class DataContext : DbContext

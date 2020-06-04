@@ -1,3 +1,6 @@
+//////////////////////////////
+// Poglavlje 3.5 - Komponente
+/////////////////////////////
 import { CommentService } from "./../../_services/comment.service";
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -8,7 +11,7 @@ import { AuthService } from "src/app/_services/auth.service";
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
-  styleUrls: ["./post.component.scss"]
+  styleUrls: ["./post.component.scss"],
 })
 export class PostComponent implements OnInit {
   constructor(
@@ -31,10 +34,10 @@ export class PostComponent implements OnInit {
 
   fetchPost() {
     this.postService.fetchPost(this.postId).subscribe(
-      res => {
+      (res) => {
         this.post = res;
       },
-      err => {
+      (err) => {
         this.toastr.error("Error while loading post data");
       }
     );
@@ -42,10 +45,10 @@ export class PostComponent implements OnInit {
 
   fetchComments() {
     this.commentService.fetchPostComments(this.postId).subscribe(
-      res => {
+      (res) => {
         this.comments = res;
       },
-      err => {
+      (err) => {
         this.toastr.error("Error while loading comment data");
       }
     );
@@ -55,11 +58,11 @@ export class PostComponent implements OnInit {
     let comment = { postId: postId, content: commentContent };
 
     this.commentService.createComment(comment).subscribe(
-      res => {
+      (res) => {
         this.toastr.success("Komentar uspesno dodat");
         this.fetchComments();
       },
-      err => {
+      (err) => {
         this.toastr.error("Greska prilikom cuvanja komentara");
       }
     );
@@ -69,13 +72,13 @@ export class PostComponent implements OnInit {
   }
   deleteComment(commentId) {
     this.commentService.deleteComment(commentId).subscribe(
-      res => {
+      (res) => {
         this.toastr.success("Komentar uspesno obrisan");
         this.comments = this.comments.filter(
-          comment => comment.id != commentId
+          (comment) => comment.id != commentId
         );
       },
-      err => {
+      (err) => {
         this.toastr.error("Greska prilikom brisanja komentara");
       }
     );
@@ -88,11 +91,11 @@ export class PostComponent implements OnInit {
   }
   deletePost() {
     this.postService.deletePost(this.postId).subscribe(
-      res => {
+      (res) => {
         this.toastr.success("Članak uspešno obrisan");
         this.router.navigate(["/topposts"]);
       },
-      err => {
+      (err) => {
         this.toastr.error("Greška prilikom brisanja članka");
       }
     );
